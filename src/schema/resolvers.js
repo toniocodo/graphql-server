@@ -1,0 +1,18 @@
+module.exports = {
+  Query: {
+    allLinks: async (root, data, { mongo: { Links } }) => {
+      return await Links.find({}).toArray()
+    },
+  },
+
+  Mutation: {
+    createLink: (root, data, { mongo: { Links } }) => {
+      const response = await Links.insert(data)
+      return Object.assign({ id: response.insertedIds[0], data })
+    }
+  },
+
+  Link: {
+    id: root => root._id || root.id
+  }
+}
