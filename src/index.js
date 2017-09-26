@@ -6,7 +6,7 @@ const connectMongo = require('./mongo-connector')
 
 const start = async () => {
   const mongo = await connectMongo()
-  let app = express()
+  var app = express()
   app.use('/graphql', bodyParser.json(), graphqlExpress({
     context: { mongo },
     schema
