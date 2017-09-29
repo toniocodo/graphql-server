@@ -38,7 +38,7 @@ const typeDefs = `
   }
   
   type Query {
-    allLinks: [Link!]!
+    allLinks(filter: LinkFilter, skip: Int, first: Int): [Link!]!
     allUsers: [User]!
   }
   
@@ -47,10 +47,6 @@ const typeDefs = `
     createVote(linkId: ID!): Vote
     createUser(name: String!, authProvider: AuthProviderSignupData!): User
     signinUser(email:AUTH_PROVIDER_EMAIL): SigninPayload!
-  }
-  
-  type Query {
-    allLinks(filter: LinkFilter): [Link!]!
   }
   
   input LinkFilter {
