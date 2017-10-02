@@ -14,7 +14,7 @@ const formatError = require('./formatError')
 const start = async () => {
   const mongo = await connectMongo()
   const app = express()
-  const PORT = 3000;
+  const PORT = 4000;
 
   // Context creation
   const buildOptions = async (req, res) => {
