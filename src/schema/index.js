@@ -2,7 +2,11 @@ const { makeExecutableSchema } = require('graphql-tools')
 const resolvers = require('./resolvers')
 
 const typeDefs = `
-  type Link {
+  interface Node {
+    id: ID!
+  }
+
+  type Link implements Node {
     id: ID!
     url: String!
     description: String!
@@ -10,13 +14,13 @@ const typeDefs = `
     votes: [Vote!]!
   }
   
-  type Vote {
+  type Vote implements Node {
     id: ID!
     user: User!
     link: Link!
   }
   
-  type User {
+  type User implements Node {
     id: ID!
     name: String!
     email: String
